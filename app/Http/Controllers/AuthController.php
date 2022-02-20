@@ -62,13 +62,17 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         $fields = $request->only(['name', 'email', 'password']);
         $fields["role_id"] = 3;
         $fields['password'] = Hash::make($fields['password']);
         $check = $this->create($fields);
+
+        $credentials = $request->only(['email', 'password']);
+        Auth::attempt($credentials);
+        $request->session()->regenerate();
 
         return redirect("admin.dashboard")->withSuccess('You have signed-in');
     }
@@ -86,6 +90,10 @@ class AuthController extends Controller
         $fields["role_id"] = 2;
         $fields['password'] = Hash::make($fields['password']);
         $check = $this->create($fields);
+
+        $credentials = $request->only(['email', 'password']);
+        Auth::attempt($credentials);
+        $request->session()->regenerate();
 
         return redirect()->route('admin.dashboard')->withSuccess('You have signed-in');
 
