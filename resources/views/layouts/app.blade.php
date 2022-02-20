@@ -46,15 +46,23 @@
             </a>
           </li> --}}
           {{-- @if (Auth::user()->role_id === 2)
-            
+
           @endif --}}
-          <li class="nav-item ">
+          @if (auth()->user()->role_id == 1)
+            <li class="nav-item ">
+                <a class="nav-link" href="/admin/user">
+                <i class="material-icons">people</i>
+                <p>Users & Departments</p>
+                </a>
+            </li>
+          @endif
+          {{-- <li class="nav-item ">
             <a class="nav-link" href="/admin/user">
               <i class="material-icons">people</i>
               <p>Users & Departments</p>
             </a>
-          </li>
-      
+          </li> --}}
+
           <li class="nav-item">
             <a class="nav-link" href="/book">
               <i class="material-icons">book</i>
@@ -193,7 +201,7 @@
               </div>
             </div>
 
-  
+
 
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
               <div class="card card-stats">
@@ -892,7 +900,7 @@
       md.initDashboardPageCharts();
 
     });
-  </script> 
+  </script>
 </body>
 
 </html>

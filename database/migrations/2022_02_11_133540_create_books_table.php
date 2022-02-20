@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('bookcase');
-            $table->tinyInteger('user_id');
+            $table->integer('user_id');
             // $table->string('section');
             // $table->string('category');
             $table->string('author');

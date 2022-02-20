@@ -27,24 +27,24 @@ Route::get('dashboard', [AdminController::class, 'showDashboard'])->name('admin.
 Route::resource('book', BookController::class);
 Route::get('/admin/user', [AdminController::class, 'showUser']);
 Route::post('/admin/user/{id}', [AdminController::class, 'deleteUser'])->name('admin.delete');
-// Route::post('custom', [AuthController::class, 'customRegistrationAdmin'])->name('register.custom'); 
+// Route::post('custom', [AuthController::class, 'customRegistrationAdmin'])->name('register.custom');
 
 // Author
-Route::post('custom-registration', [AuthController::class, 'customRegistrationAuthor'])->name('register.author'); 
+Route::post('custom-registration', [AuthController::class, 'customRegistrationAuthor'])->name('register.author');
 Route::get('/author/{user_id}', [AuthorController::class, 'index'])->name('author.index');
 Route::post('/author/{user_id}', [AuthorController::class, 'store'])->name('author.store');
 Route::get('/author/book/{user_id}', [AuthorController::class, 'createBook'])->name('author.book_create');
-
+// Author dashboard
 
 // Users
-Route::post('registration', [AuthController::class, 'customRegistrationUser'])->name('register.custom'); 
+Route::post('registration', [AuthController::class, 'customRegistrationUser'])->name('register.custom');
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/download', [UserController::class, 'download']);
-
+// User dashboard
 
 // Login
 Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
+Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
 
 // Register
 Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
