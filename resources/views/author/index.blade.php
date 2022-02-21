@@ -11,7 +11,7 @@
       <button class="btn btn-primary">Create Category</button>
     </a>
     
-    <a href="{{ route('author.book_create', $user_id) }}" class="">
+    <a href="" class=""> {{-- {{ route('author.book_create', $user_id) }} --}}
       <button class="btn btn-primary">Add Book</button>
     </a>
 

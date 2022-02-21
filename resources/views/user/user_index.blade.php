@@ -45,7 +45,7 @@
           
               <td>
               
-                <a href="user/download{{ $book->name }}" download="{{ $book->name }}">
+                <a href="{{ route('user.download', $book->name) }}" download="{{ $book->name }}">
                     <i class="fa fa-download" aria-hidden="true"></i>
                 </a>
                   @endforeach

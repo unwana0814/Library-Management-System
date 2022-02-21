@@ -28,7 +28,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-   
+   public function isAdmin(){
+       return $this->role_id === 1;
+   }
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

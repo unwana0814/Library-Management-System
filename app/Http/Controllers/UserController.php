@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index(){
         $books = Book::all();
         return view('user.user_index', [
-            'books' => $books
+            'books' => $books,
         ]);
     }
 

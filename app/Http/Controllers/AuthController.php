@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
-{
+{ 
 
     public function index()
     {
@@ -30,15 +30,15 @@ class AuthController extends Controller
         {
             
             if($user->role_id === 1){
-                return redirect()->route('admin.dashboard', $user->id);
+                return redirect()->route('/dashboard', $user->id);
             }
 
             elseif($user->role_id === 2){
-                return redirect()->route('admin.dashboard', $user->id);
+                return redirect()->route('/admin/user', $user->id);
             }
 
             else{
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('/user');
             }
         }
 
@@ -64,8 +64,10 @@ class AuthController extends Controller
         $fields["role_id"] = 3;
         $fields['password'] = Hash::make($fields['password']);
         $check = $this->create($fields);
-         
-        return redirect("admin.dashboard")->withSuccess('You have signed-in');
+
+        Auth::attempt($request->only('email', 'password'));
+
+        return redirect()->route('/users')->withSuccess('You have signed-in');
     }
 
     public function customRegistrationAuthor(Request $request)
@@ -82,7 +84,9 @@ class AuthController extends Controller
         $fields['password'] = Hash::make($fields['password']);
         $check = $this->create($fields);
          
-        return redirect()->route('admin.dashboard')->withSuccess('You have signed-in');
+        Auth::attempt($request->only('email', 'password'));
+
+        return redirect()->route('/admin/user')->withSuccess('You have signed-in');
 
     }
 
@@ -98,3 +102,4 @@ class AuthController extends Controller
         return Redirect('login');
     }
 }
+
